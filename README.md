@@ -1,2 +1,2 @@
 # sigma-csv
-A javascript library to read or write csv
+A javascript / Typescript library to be able to read and write csv files
