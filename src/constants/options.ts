@@ -1,9 +1,7 @@
 export const ReadOptions: CSVParseOptions = {
-    delimiter: ",",
-    includeHeaders: true
+    delimiter: ","
 };
 
 export const WriteOptions: CSVStringifyOptions = {
-    delimiter: ",",
-    withHeaders: true
-}
+    delimiter: ","
+};

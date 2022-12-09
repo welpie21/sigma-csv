@@ -1,5 +1,6 @@
 /**
  * Reads a file from the file system.
+ * this is a util function for the test coverage.
  * @param file
  */
 export function readFile(file: File): string|Error {

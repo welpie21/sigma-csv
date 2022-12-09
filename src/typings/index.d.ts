@@ -6,10 +6,8 @@ type Maybe<T> = T | null | undefined;
  */
 interface CSVParseOptions {
     delimiter?: string;
-    includeHeaders?: boolean;
 }
 
 interface CSVStringifyOptions {
     delimiter?: string;
-    withHeaders?: boolean;
 }

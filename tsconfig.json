@@ -1,19 +1,28 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
-    "moduleResolution": "Node",
-    "strict": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "noEmit": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "skipLibCheck": true
-  },
-  "include": ["src"]
+    "compilerOptions": {
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "moduleResolution": "Node",
+        "strict": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "noEmit": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "skipLibCheck": true,
+        "types": [
+            "vitest/globals"
+        ]
+    },
+    "include": [
+        "src",
+        "node_modules/.pnpm/vitest@0.25.6_@vitest+ui@0.25.6/node_modules/vitest/globals.d.ts"
+    ]
 }
