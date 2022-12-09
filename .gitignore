@@ -1,0 +1,8 @@
+# common ignores
+node_modules
+
+# IDE ignore
+.idea
+
+# pnpm ignore
+pnpm-lock.yaml
