@@ -4,3 +4,4 @@ id;title;description;rating
 2;python;programming language;2
 3;javascript;programming language;3
 4;typescript;programming language;5
+5;"js,ts\n others";programming language;5

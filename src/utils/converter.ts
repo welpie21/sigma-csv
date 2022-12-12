@@ -1,37 +1,27 @@
-import { ReadOptions } from "../constants/options";
+import {ReadOptions} from "../constants/options";
 
-export function csvToJson<T>(csv: string, options: CSVParseOptions = ReadOptions): T[] {
+export function csvToJson<T>(csv: string, options: CSVParseOptions<any> = ReadOptions): CSVParseResult<T> {
 
-    const { delimiter } = options;
-    const result: T[] = [];
+    const {delimiter, asJSON, includeHeaders, headers} = options;
+    const result: T[] | Tuple<Tuple<any, number>, number> = [];
 
-    // Split the csv into rows
-    const rows = csv.split("\n");
+    const regex = new RegExp(`\\r\\n|\\n|\\r`, "g");
 
-    // Get the headers
-    const headers: (keyof T)[] = rows[0].split(delimiter || ",") as (keyof T)[];
+    const rows = regex.exec(csv);
 
-    // Remove the headers from the rows
-    rows.splice(0, 1);
-
-    // Loop through the rows
-    for (const row of rows) {
-
-            // Split the row into columns
-            const columns = row.split(delimiter || ",");
-
-            // Create a new object
-            const obj: Record<keyof T, any> = {} as any;
-
-            // Loop through the columns
-            for (let i = 0; i < columns.length; i++) {
-                obj[headers[i] as keyof T] = columns[i];
-            }
-
-            // Add the object to the result
-            result.push(obj);
+    if (!includeHeaders) {
+        rows.splice(0, 1);
     }
 
-    // Return the result
+    let object: Partial<T> = {};
+    let inQuotes: boolean = false;
+
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        for (let j = 0; j < row.length; j++) {
+            const character = row[j];
+        }
+    }
+
     return result;
 }
