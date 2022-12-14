@@ -1,6 +1,9 @@
 import { readFileSync } from "fs";
 import {expect, test} from "vitest";
 import {csvToJson} from "../utils/converter";
+import {initialize} from "../index";
+
+initialize();
 
 describe("read and convert to json", () => {
 

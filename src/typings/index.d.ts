@@ -5,7 +5,7 @@ type Tuple<T, L extends number> = [T, ...T[]] & { length: L };
 /**
  * The result of a parse operation. Contains the parsed data and information in a JSON format or an array of objects.
  */
-type CSVParseResult<T> = T[] | Tuple<Tuple<any, number>, number>;
+type CSVParseResult<T> = Tuple<Tuple<any, number>, number> | string;
 
 /**
  * CSV specific types
