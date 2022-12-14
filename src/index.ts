@@ -1,4 +1,4 @@
-import {parseDelimiter} from "./plugin/parser/delimiter";
+import {parseBackslash, parseDelimiter, parseEmpty} from "./plugin/delimiter";
 
 export const parserRegistry = new Map<string, (params: CSVParseParams<any>) => void>();
 
@@ -8,11 +8,21 @@ export function registerParseProcess<T = any>(character: string, plugin: (params
 
 /**
  * initializes the csv parser processors.
+ * @param override - override the default processors.
  */
-export function initialize(extend?: () => void): void {
+export function initialize(override?: (registry: Map<string, (params: CSVParseParams<any>) => void>) => void): void {
 
+    /** supporting custom delimiter */
     registerParseProcess(",", parseDelimiter);
-    extend?.();
+    registerParseProcess(";", parseDelimiter);
+
+    /** supporting custom escape character */
+    registerParseProcess("\\", parseBackslash);
+
+    /** supporting custom quote character */
+    registerParseProcess(" ", parseEmpty);
+
+    override?.(parserRegistry);
 }
 
 export {csvToJson} from "./utils/converter";

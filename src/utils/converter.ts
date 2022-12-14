@@ -11,20 +11,27 @@ export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOp
     let isQuoted: boolean = false;
 
     for (let i = 0; i < csv.length; i++) {
+
+        // reset the value if the current character is a new line.
+        val = "";
+
         const char = csv[i];
         const next = csv[i + 1];
         const prev = csv[i - 1];
 
-        const params: CSVParseParams<T> = {
-            current: char,
-            object: {} as T,
-            index: row,
-            inQuotes: isQuoted,
-            data: result
-        };
-
-        const parse = parserRegistry.get(char);
-        parse?.(params);
+        if(parserRegistry.has(char)) {
+            const parse = parserRegistry.get(char);
+            parse?.({
+                current: char,
+                row,
+                inQuotes: isQuoted,
+                table: result,
+                previousChar: prev,
+                nextChar: next
+            } as CSVParseParams<T>);
+        } else {
+            val += char;
+        }
     }
 
     console.log(result);
@@ -38,8 +45,4 @@ export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOp
     }
 
     return result;
-}
-
-type Object = {
-    id: string;
 }

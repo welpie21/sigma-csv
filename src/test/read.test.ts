@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import {readFileSync} from "fs";
 import {expect, test} from "vitest";
 import {csvToJson} from "../utils/converter";
 import {initialize} from "../index";
@@ -29,7 +29,7 @@ describe("read and convert to json", () => {
 
     test("should try to convert csv to json with custom delimiter", () => {
         const file = readFileSync("src/assets/file-2.csv", "utf-8");
-        const result = csvToJson(file, { delimiter: ";" });
+        const result = csvToJson(file, {delimiter: ";"});
 
         expect(result).toBeTruthy();
         expect(result.length).toBe(6);
@@ -44,11 +44,10 @@ describe("read and convert to json", () => {
 
     test("should try to convert csv to json with a newline in quotes", () => {
         const file = readFileSync("src/assets/file-3.csv", "utf-8");
-        const result = csvToJson(file, { delimiter: "," });
+        const result = csvToJson(file, {delimiter: ","});
 
         expect(result).toBeTruthy();
 
         console.log(result);
-    })
-
+    });
 });
