@@ -1,4 +1,4 @@
-import {tryParseNumber} from "../utils/helpers";
+import {tryParseNumber} from "./utils/helpers";
 
 /**
  *

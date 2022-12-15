@@ -1,7 +1,7 @@
-import {ReadOptions} from "../constants/options";
-import {parserRegistry} from "../index";
+import {ReadOptions} from "./constants/options";
+import {parserRegistry} from "./";
 
-export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOptions<I> = ReadOptions as any): T[] | string | Tuple<Tuple<number, any>, any> {
+export function readCSV<T, I extends boolean>(csv: string, options: CSVParseOptions<I> = ReadOptions as any): T[] | string | Tuple<Tuple<number, any>, any> {
 
     const {delimiter, asJSON, includeHeaders, headers, parseNumbers} = options;
     let table: Tuple<Tuple<any, number>, number> = [];

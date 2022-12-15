@@ -1,4 +1,4 @@
-import {parseNewline, parseDelimiter, parseDoubleQuotes, parseEmpty} from "./plugin/delimiter";
+import {parseNewline, parseDelimiter, parseDoubleQuotes, parseEmpty} from "./parsers";
 
 export const parserRegistry = new Map<string, (params: CSVParseParams<any>) => void>();
 
@@ -28,4 +28,4 @@ export function initialize(override?: (registry: Map<string, (params: CSVParsePa
     override?.(parserRegistry);
 }
 
-export {csvToJson} from "./utils/converter";
+export {readCSV} from "./read";
