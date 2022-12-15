@@ -1,10 +1,10 @@
 {
-	"name": "vite-project",
+	"name": "sigma-csv",
 	"description": "A javascript / Typescript library to be able to read and write csv files",
 	"homepage": "https://github.com/welpie21/sigma-csv",
 	"readme": "README.md",
-	"private": true,
-	"version": "0.0.1",
+	"docs": "https://github.com/welpie21/sigma-csv/blob/main/docs.md",
+	"version": "0.0.2",
 	"type": "module",
 	"license": "MIT",
 	"files": [
