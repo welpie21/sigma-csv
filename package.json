@@ -4,7 +4,7 @@
 	"homepage": "https://github.com/welpie21/sigma-csv",
 	"readme": "README.md",
 	"private": true,
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"type": "module",
 	"author": {
 		"name": "Beau den Heijer",

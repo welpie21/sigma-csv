@@ -1,5 +1,3 @@
-// const { object, inQuotes, current, index, nextChar, previousChar, data } = params;
-
 /**
  *
  * @param params
@@ -7,31 +5,36 @@
 export function parseDelimiter(params: CSVParseParams<any>) {
 
     // if we are not in quotes, we can safely ignore the delimiter.
-    if(params.inQuotes) {
+    if (params.inQuotes) {
         return;
     }
 
-    if(params.table[params.row] === undefined) {
-
+    // check if the passed in delimiter matches the current character.
+    if (params.delimiter !== params.current) {
+        return;
     }
+
+    if (params.table[params.row] === undefined) {
+        params.table[params.row] = [];
+    }
+
+    params.table[params.row].push(params.value);
+    params.reset(true, false);
 }
 
 /**
  * handles the parsing of a backslash character.
  * @param params
  */
-export function parseBackslash(params: CSVParseParams<any>) {
-    const next = params.nextChar;
+export function parseNewline(params: CSVParseParams<any>) {
 
-    if(params.inQuotes) {
+    if (params.inQuotes) {
         return;
     }
 
-    if (next === "n") {
-        params.row++;
-    }
-
-    console.log(params.row);
+    params.addRow();
+    params.reset(true, true);
+    params.table.push([]);
 }
 
 /**
@@ -40,7 +43,7 @@ export function parseBackslash(params: CSVParseParams<any>) {
  */
 export function parseDoubleQuotes(params: CSVParseParams<any>) {
 
-    if(!params.inQuotes) {
+    if (!params.inQuotes) {
         params.inQuotes = true;
         return;
     }
@@ -50,10 +53,5 @@ export function parseDoubleQuotes(params: CSVParseParams<any>) {
  *
  */
 export function parseEmpty(params: CSVParseParams<any>) {
-
-    const { previousChar, current, nextChar } = params;
-
-    if(params.inQuotes) {
-        return;
-    }
+    params.add(" ");
 }

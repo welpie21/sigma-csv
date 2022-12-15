@@ -1,4 +1,4 @@
-import {parseBackslash, parseDelimiter, parseEmpty} from "./plugin/delimiter";
+import {parseNewline, parseDelimiter, parseDoubleQuotes, parseEmpty} from "./plugin/delimiter";
 
 export const parserRegistry = new Map<string, (params: CSVParseParams<any>) => void>();
 
@@ -17,10 +17,13 @@ export function initialize(override?: (registry: Map<string, (params: CSVParsePa
     registerParseProcess(";", parseDelimiter);
 
     /** supporting custom escape character */
-    registerParseProcess("\\", parseBackslash);
+    registerParseProcess("\n", parseNewline);
 
     /** supporting custom quote character */
     registerParseProcess(" ", parseEmpty);
+
+    /** supporting custom quote character */
+    registerParseProcess("\"", parseDoubleQuotes);
 
     override?.(parserRegistry);
 }

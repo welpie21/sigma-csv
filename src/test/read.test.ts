@@ -19,7 +19,7 @@ describe("read and convert to json", () => {
         expect(result).toBeTruthy();
         expect(result.length).toBe(5);
 
-        expect(result[0]).toEqual({
+        expect(result[1]).toEqual({
             id: "0",
             title: "vitest",
             description: "a library to test your code",

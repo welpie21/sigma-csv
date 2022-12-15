@@ -1,4 +1,4 @@
-export const ReadOptions: CSVParseOptions<boolean> = {
+export const ReadOptions: CSVParseOptions<true> = {
     delimiter: ",",
     includeHeaders: true,
     headers: undefined,

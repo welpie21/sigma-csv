@@ -16,7 +16,7 @@ export default defineConfig({
                 minifyInternalExports: true
             },
             external: (id: string) => {
-                return id.includes("/test/");
+                return id.includes("/test/") || id.includes("/typings/");
             }
         },
     },
