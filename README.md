@@ -16,6 +16,8 @@ This package is bundled by vite. we provide the following support for bundlers:
 2. [x] Customizable CSV parsing
 3. [x] CSV parsing with custom delimiters
 4. [x] Results can be returned as an array of objects, JSON or Tuples (arrays)
+5. [x] The option to parse a column to a number.
+6. [x] 
 
 ## Installation
 
@@ -37,6 +39,7 @@ The documentation is available
 ---
 ## Roadmap
 1. [ ] Be able to convert to a CSV format
+2. [ ] Number parse option for a column
 
 ---
 ## Suggestions
