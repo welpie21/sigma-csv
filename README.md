@@ -32,7 +32,7 @@ pnpm add sigma-csv
 ```
 
 ## Documentation
-The documentation is available [here](https://sigma-csv.netlify.app/)
+The documentation is available
 
 ---
 ## Roadmap
