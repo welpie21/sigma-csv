@@ -1,5 +1,6 @@
 import {defineConfig} from "vite";
 import {resolve} from "path";
+import dtsPlugin from "vite-plugin-dts";
 
 export default defineConfig({
     build: {
@@ -16,7 +17,7 @@ export default defineConfig({
                 minifyInternalExports: true
             },
             external: (id: string) => {
-                return id.includes("/test/") || id.includes("/typings/");
+                return id.includes("/test/");
             }
         },
     },
@@ -26,5 +27,8 @@ export default defineConfig({
         minifySyntax: true,
         minifyWhitespace: true,
         target: "esnext"
-    }
+    },
+    plugins: [
+        dtsPlugin()
+    ]
 });

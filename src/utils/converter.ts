@@ -4,7 +4,8 @@ import {parserRegistry} from "../index";
 export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOptions<I> = ReadOptions as any): T[] | string | Tuple<Tuple<number, any>, any> {
 
     const {delimiter, asJSON, includeHeaders, headers, parseNumbers} = options;
-    let result: Tuple<Tuple<any, number>, number> = [];
+    let table: Tuple<Tuple<any, number>, number> = [];
+    let result: T[] = [];
 
     let value: string = "";
     let row: number = 0;
@@ -27,8 +28,8 @@ export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOp
 
     const addRow = () => {
         row++;
-        if (result[row] === undefined) {
-            result[row] = [];
+        if (table[row] === undefined) {
+            table[row] = [];
         }
     }
 
@@ -58,7 +59,7 @@ export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOp
         const params: Partial<CSVParseParams<T>> = {
             current: char,
             inQuotes: isQuoted,
-            table: result,
+            table: table,
             previousChar: prev,
             nextChar: next,
             value,
@@ -75,31 +76,34 @@ export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOp
 
     // when the parser is done parsing, we need to add the last value to the table.
     if (value !== "") {
-        result[row].push(value);
+        table[row].push(value);
     }
 
     // delete the last row if it is empty.
-    if (result[result.length - 1].length === 0) {
-        result.pop();
+    if (table[table.length - 1].length === 0) {
+        table.pop();
     }
 
     // remove first row if we do not want to include the headers.
     if (!includeHeaders && headers !== undefined) {
-        result[0] = headers;
+        table[0] = headers;
     }
 
-    const keys = result[0].slice();
-    result.shift();
+    const keys = table[0].slice();
+    table.shift();
 
-    // constructing the result object.
+    // constructing the table object.
     if ((!includeHeaders && headers !== undefined) || includeHeaders) {
-        result = Object.freeze<any>(result.map((row) => {
-            return row.reduce((acc, value, j) => {
-                acc[keys[j]] = value;
-                return acc;
-            }, {});
-        }));
+
+        for (let i = 0; i < table.length; i++) {
+            const row = table[i];
+            const obj: any = {};
+            for (let j = 0; j < row.length; j++) {
+                obj[keys[j]] = row[j];
+            }
+            result.push(obj);
+        }
     }
 
-    return asJSON ? JSON.stringify(result) : result;
+    return asJSON ? JSON.stringify(result) : result.length > 0 ? result : table;
 }

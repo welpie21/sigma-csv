@@ -16,13 +16,13 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitReturns": true,
-        "skipLibCheck": true,
+        "declaration": true,
+        "outDir": "dist",
         "types": [
             "vitest/globals"
         ]
     },
     "include": [
-        "src",
-        "node_modules/.pnpm/vitest@0.25.6_@vitest+ui@0.25.6/node_modules/vitest/globals.d.ts"
+        "src"
     ]
 }
