@@ -18,7 +18,7 @@ initialize((registry) => {
 ## Parsing a CSV file
 
 ```ts
-import { read } from "sigma-csv";
+import { readCSV } from "sigma-csv";
 
 const result = read(csvfile, {
     /**
