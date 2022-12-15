@@ -3,7 +3,7 @@ import {parserRegistry} from "../index";
 
 export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOptions<I> = ReadOptions as any): T[] | string | Tuple<Tuple<number, any>, any> {
 
-    const {delimiter, asJSON, includeHeaders, headers} = options;
+    const {delimiter, asJSON, includeHeaders, headers, parseNumbers} = options;
     let result: Tuple<Tuple<any, number>, number> = [];
 
     let value: string = "";
@@ -41,7 +41,8 @@ export function csvToJson<T, I extends boolean>(csv: string, options: CSVParseOp
         reset,
         addRow,
         csv,
-        delimiter: delimiter || ","
+        delimiter: delimiter || ",",
+        parseNumber: parseNumbers || false,
     };
 
     for (let i = 0; i < csv.length; i++) {

@@ -1,3 +1,5 @@
+import {tryParseNumber} from "../utils/helpers";
+
 /**
  *
  * @param params
@@ -18,7 +20,7 @@ export function parseDelimiter(params: CSVParseParams<any>) {
         params.table[params.row] = [];
     }
 
-    params.table[params.row].push(params.value);
+    params.table[params.row].push(params.parseNumber ? tryParseNumber(params.value) : params.value);
     params.reset(true, false);
 }
 

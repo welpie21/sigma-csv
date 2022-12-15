@@ -31,6 +31,12 @@ interface CSVParseParams<T> {
     inQuotes: boolean;
 
     /**
+     * The parser tries converts the value to a number if possible.
+     * if disabled it will return the value as a string.
+     */
+    parseNumber: boolean;
+
+    /**
      * Gives the next character where the parser is currently on.
      */
     nextChar: string;

@@ -74,4 +74,19 @@ describe("read and convert to json", () => {
         expect(result.length).toBe(6);
         expect(result[0]).toEqual(["0", "vitest", "a library to test your code", "5"]);
     });
+
+    test("convert csv to array of objects and parse possible numbers", () => {
+
+        const file = readFileSync("src/assets/file-2.csv", "utf-8");
+
+        const result = csvToJson(file, {
+            delimiter: ";",
+            includeHeaders: false,
+            parseNumbers: true
+        });
+
+        expect(result).toBeTruthy();
+        expect(result.length).toBe(6);
+        expect(result[0]).toEqual([0, "vitest", "a library to test your code", 5]);
+    });
 });

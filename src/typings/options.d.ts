@@ -24,6 +24,11 @@ interface CSVParseOptions<I extends boolean> {
      * else result will be an array of arrays.
      */
     headers?: string[];
+
+    /**
+     * Converts the string to a number if possible.
+     */
+    parseNumbers?: boolean;
 }
 
 interface CSVStringifyOptions {
