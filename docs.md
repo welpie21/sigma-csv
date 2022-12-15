@@ -20,7 +20,7 @@ initialize((registry) => {
 ```ts
 import { readCSV } from "sigma-csv";
 
-const result = read(csvfile, {
+const result = readCSV(csvfile, {
     /**
      * The delimiter used to separate columns in the CSV file.
      * @default ","
