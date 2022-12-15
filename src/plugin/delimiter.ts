@@ -50,7 +50,7 @@ export function parseDoubleQuotes(params: CSVParseParams<any>) {
 }
 
 /**
- *
+ * handles the parsing of empty characters.
  */
 export function parseEmpty(params: CSVParseParams<any>) {
     params.add(" ");

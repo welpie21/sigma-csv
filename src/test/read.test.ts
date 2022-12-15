@@ -7,19 +7,19 @@ initialize();
 
 describe("read and convert to json", () => {
 
-    test("reading the file works and exists?", () => {
+    test("file exists", () => {
         const file = readFileSync("src/assets/file-1.csv", "utf-8");
         expect(file).toBeTruthy();
     });
 
-    test("should try to convert csv to json", () => {
+    test("convert csv to array of objects", () => {
         const file = readFileSync("src/assets/file-1.csv", "utf-8");
         const result = csvToJson(file);
 
         expect(result).toBeTruthy();
         expect(result.length).toBe(5);
 
-        expect(result[1]).toEqual({
+        expect(result[0]).toEqual({
             id: "0",
             title: "vitest",
             description: "a library to test your code",
@@ -27,9 +27,13 @@ describe("read and convert to json", () => {
         });
     });
 
-    test("should try to convert csv to json with custom delimiter", () => {
+    test("convert to array of objects with custom delimiter and headers", () => {
+
         const file = readFileSync("src/assets/file-2.csv", "utf-8");
-        const result = csvToJson(file, {delimiter: ";"});
+        const result = csvToJson(file, {
+            delimiter: ";",
+            headers: ["id", "title", "description", "rating"]
+        });
 
         expect(result).toBeTruthy();
         expect(result.length).toBe(6);
@@ -42,12 +46,32 @@ describe("read and convert to json", () => {
         });
     });
 
-    test("should try to convert csv to json with a newline in quotes", () => {
-        const file = readFileSync("src/assets/file-3.csv", "utf-8");
-        const result = csvToJson(file, {delimiter: ","});
+    test("convert csv to json string", () => {
+
+        const file = readFileSync("src/assets/file-2.csv", "utf-8");
+        const result = csvToJson(file, {
+            delimiter: ";",
+            headers: ["id", "title", "description", "rating"],
+            asJSON: true
+        });
 
         expect(result).toBeTruthy();
 
-        console.log(result);
+        const jsonRegex = /^(\[)(\{)(.*)(\})(\])$/;
+        expect(jsonRegex.test(result as string)).toBeTruthy();
+    });
+
+    test("convert csv to tuple", () => {
+
+        const file = readFileSync("src/assets/file-2.csv", "utf-8");
+
+        const result = csvToJson(file, {
+            delimiter: ";",
+            includeHeaders: false
+        });
+
+        expect(result).toBeTruthy();
+        expect(result.length).toBe(6);
+        expect(result[0]).toEqual(["0", "vitest", "a library to test your code", "5"]);
     });
 });
