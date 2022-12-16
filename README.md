@@ -4,21 +4,20 @@ Fully customizable and supports partial parsing of a basic csv file.
 
 
 ## Bundler
-This package is bundled by vite. we provide 4 different bundles for different environments and those are:
-- [x] esm
-- [x] cjs
-- [x] umd
-- [x] iife
+This package is bundled by vite. we provide 4 different bundles for different environments and those are: <br>
+✅ esm<br>
+✅ cjs<br>
+✅ umd<br>
+✅ iife
 
 ## CSV parser support
 currently the parser supports a few features that is already implemented.
 
-
-1. [x] Basic CSV parsing
-2. [x] Extending CSV parsing
-3. [x] CSV parsing with custom delimiters
-4. [x] Results can be returned as an array of objects, JSON or Tuples (arrays)
-5. [x] The option to parse every single column to a number if possible
+✅ Basic CSV parsing<br>
+✅ Extending CSV parsing<br>
+✅ CSV parsing with custom delimiters<br>
+✅ Results can be returned as an array of objects, JSON or Tuples (arrays)<br>
+✅ The option to parse every single column to a number if possible
 
 the parser currently is supporting the following features: 
 ```text
@@ -42,9 +41,9 @@ pnpm add sigma-csv
 The documentation is available [here](https://github.com/welpie21/sigma-csv/blob/main/docs.md)
 
 ## Roadmap
-1. [ ] Be able to convert to a CSV format
-2. [ ] Number parse option for a column
-3. [ ] Support for web workers
+🔲 Be able to convert to a CSV format <br>
+🔲 Number parse option for a column <br>
+🔲 Support for web workers
 
 ## Suggestions
 
