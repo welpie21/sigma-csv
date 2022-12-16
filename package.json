@@ -23,10 +23,8 @@
 	},
 	"exports": {
 		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs",
-			"node": "./dist/index.js",
-			"default": "./dist/index.js"
+			"import": "./dist/sigma-csv.js",
+			"require": "./dist/sigma-csv.umd.js"
 		}
 	},
 	"author": {

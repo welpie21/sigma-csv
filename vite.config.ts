@@ -8,8 +8,7 @@ export default defineConfig({
         lib: {
             entry: resolve(__dirname, "src/index.ts"),
             name: "index",
-            fileName: (format) => `index.${format}.js`,
-            formats: ['es', 'cjs', 'iife', 'umd']
+            fileName: "sigma-csv"
         },
         rollupOptions: {
             output: {
@@ -19,7 +18,7 @@ export default defineConfig({
             external: (id: string) => {
                 return id.includes("/test/");
             }
-        },
+        }
     },
     esbuild: {
         sourcemap: true,
