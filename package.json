@@ -4,7 +4,7 @@
 	"homepage": "https://github.com/welpie21/sigma-csv",
 	"readme": "README.md",
 	"docs": "https://github.com/welpie21/sigma-csv/blob/main/docs.md",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"type": "module",
 	"license": "MIT",
 	"files": [
