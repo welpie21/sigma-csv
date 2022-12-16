@@ -4,16 +4,29 @@
 	"homepage": "https://github.com/welpie21/sigma-csv",
 	"readme": "README.md",
 	"docs": "https://github.com/welpie21/sigma-csv/blob/main/docs.md",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"type": "module",
 	"license": "MIT",
+	"main": "index.js",
+	"bugs": {
+		"url": "https://github.com/welpie21/sigma-csv/issues"
+	},
 	"files": [
-		"dist"
+		"dist",
+		"LICENSE",
+		"README.md",
+		"docs.md"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/welpie21/sigma-csv"
+	},
 	"exports": {
 		".": {
-			"import": "./dist/sigma-csv.esm.js",
-			"require": "./dist/sigma-csv.umd.js"
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
+			"node": "./dist/index.js",
+			"default": "./dist/index.js"
 		}
 	},
 	"author": {

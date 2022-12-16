@@ -7,8 +7,8 @@ export default defineConfig({
         minify: "esbuild",
         lib: {
             entry: resolve(__dirname, "src/index.ts"),
-            name: "sigma-csv",
-            fileName: (format) => `sigma-csv.${format}.js`,
+            name: "index",
+            fileName: (format) => `index.${format}.js`,
             formats: ['es', 'cjs', 'iife', 'umd']
         },
         rollupOptions: {
