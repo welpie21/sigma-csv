@@ -41,12 +41,17 @@ pnpm add sigma-csv
 ## Documentation
 The documentation is available [here](https://github.com/welpie21/sigma-csv/blob/main/docs.md)
 
----
 ## Roadmap
 1. [ ] Be able to convert to a CSV format
 2. [ ] Number parse option for a column
 3. [ ] Support for web workers
 
----
 ## Suggestions
+
 If you have any suggestions, please feel free to open an issue or a pull request.
+
+## License
+
+sigma-csv is licensed under the [MIT License](https://github.com/welpie21/sigma-csv/blob/main/LICENSE)
+
+Copyright (c) 2022-present, Beau den Heijer
